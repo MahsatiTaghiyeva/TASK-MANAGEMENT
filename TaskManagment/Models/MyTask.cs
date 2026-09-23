@@ -4,27 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManagment.Models
+public class MyTask
 {
-    internal class MyTask
-    {
-        public int Id { get; set; }
-        private static int Count = 0;
-        public string Title { get; set; } = null!;
-        public string Description { get; set; } = null!;
-        public DateTime Created { get; set; }
-        public DateTime DeadLine { get; set; }
-        public TaskStatus TaskStatus { get; set; }
+    private static int Count = 0;
+    public int Id { get; set; }
+    public string Title { get; set; } = null!;
+    public string Description { get; set; } = null!;
+    public DateTime Created { get; }
+    public DateTime DeadLine { get; set; }
+    public TaskStatus TaskStatus { get; set; }
+    public TaskPriority TaskPriority { get; set; }
 
-        public MyTask()
-        {
-            Count++;
-            Id = Count;
-            Created = DateTime.Now;
-        }
-        public override string ToString()
-        {
-            return $"Id: {Id}, Title: {Title}, Description: {Description}, Created: {Created}, Deadline: {DeadLine}, TaskStatus: {TaskStatus}";
-        }
+    public MyTask(string title, string description, DateTime deadLine, TaskStatus taskStatus, TaskPriority taskPriority)
+    {
+        Count++;
+        Id = Count;
+        Created = DateTime.Now;
+        Title = title;
+        Description = description;
+        DeadLine = deadLine;
+        TaskStatus = taskStatus;
+        TaskPriority = taskPriority;
+    }
+
+    public override string ToString()
+    {
+        return $"Id: {Id}, Title: {Title}, Description: {Description}, Created: {Created}, Deadline: {DeadLine}, Task Status: {TaskStatus}, Task Priority: {TaskPriority} ";
     }
 }
