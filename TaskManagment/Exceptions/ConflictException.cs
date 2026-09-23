@@ -1,7 +1,9 @@
-public class ConflictException : Exception
-{ 
-    public ConflictExceptionException(string message) : base(message) 
-    { 
-
+namespace TaskManagment.Exceptions
+{
+    public class ConflictException : Exception
+    {
+        public ConflictException(string message) : base(message)
+        {
+        }
     }
 }

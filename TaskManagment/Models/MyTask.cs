@@ -14,21 +14,13 @@ namespace TaskManagment.Models
         public string Description { get; set; } = null!;
         public DateTime Created { get; set; }
         public DateTime DeadLine { get; set; }
-        public TaskStatus TaskStatus;
-        
-        public MyTask(string title, string description, DateTime created, DateTime deadLine, TaskStatus taskstatus)
-        {
-            Title = title;
-            DEscription = description;
-            Created = created;
-            DeadLine = deadline;
-            TaskStatus
-        }
-        public MyTask(DateTime created)
+        public TaskStatus TaskStatus { get; set; }
+
+        public MyTask()
         {
             Count++;
             Id = Count;
-            Created = created;
+            Created = DateTime.Now;
         }
         public override string ToString()
         {
