@@ -1,6 +1,9 @@
-public enum TaskPriority
+namespace TaskManagment.Enums
 {
-    Low,
-Medium,
-High
+    public enum TaskPriority
+    {
+        Low,
+        Medium,
+        High
+    }
 }

@@ -1,7 +1,11 @@
+using System;
 
-public class ConflictException : Exception
+namespace TaskManagment.Exceptions
 {
-    public ConflictException(string message) : base(message)
+    public class ConflictException : Exception
     {
+        public ConflictException(string message) : base(message)
+        {
+        }
     }
 }

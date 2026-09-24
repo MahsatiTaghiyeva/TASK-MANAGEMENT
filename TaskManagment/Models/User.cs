@@ -1,19 +1,24 @@
-public class User
+namespace TaskManagment.Models
 {
-    private static int Count = 0;
-    public int Id {get; set;}
-    public string Name {get; set;} = null!;
-    public string Email {get; set;} = null!;
-    public User(int id, string name, string email)
+    public class User
     {
-        Count++;
-        Id = Count;
-        Name = name;
-        Email = email;
-    }
-    public override string ToString()
-    {
-        return $"Id: {Id}, Name: {Name}, Email: {Email}";
-    }
+        private static int Count = 0;
 
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Email { get; set; } = null!;
+
+        public User(string name, string email)
+        {
+            Count++;
+            Id = Count;
+            Name = name;
+            Email = email;
+        }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}, Name: {Name}, Email: {Email}";
+        }
+    }
 }

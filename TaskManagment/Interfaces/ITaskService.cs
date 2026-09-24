@@ -1,13 +1,24 @@
-﻿
-public interface ITaskService
-{
-    public void AddTask(MyTask Task);
-    public MyTask FindByTitle(string title);
-    public List<MyTask> FindByStatus(string status);
-    public void DeleteById(int id);
-    public List<MyTask> FindByPriority(string priority);
-    public void ChangePriority(int id, TaskPriority priority);
-    public void AssignTaskToUser(int TaskId, int UserId);
-    List<MyTask> GetTasksByUser(int userId);
-}
+﻿using TaskManagment.Enums;
+using TaskManagment.Models;
 
+namespace TaskManagment.Interfaces
+{
+    public interface ITaskService
+    {
+        void AddTask(MyTask task);
+
+        MyTask FindByTitle(string title);
+
+        List<MyTask> FindByStatus(string status);
+
+        void DeleteById(int id);
+
+        List<MyTask> FindByPriority(string priority);
+
+        void ChangePriority(int id, TaskPriority priority);
+
+        void AssignTaskToUser(int taskId, int userId);
+
+        List<MyTask> GetTasksByUser(int userId);
+    }
+}

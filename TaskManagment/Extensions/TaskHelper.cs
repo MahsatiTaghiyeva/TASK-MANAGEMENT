@@ -1,12 +1,17 @@
-public static class TaskHelper
-{
-    public static TimeSpan GetRemainingTime(this MyTask task)
-    {
-        return task.DeadLine - DateTime.Now;
-    }
+using TaskManagment.Models;
 
-    public static TimeSpan GetAllocatedTime(this MyTask task)
+namespace TaskManagment.Helpers
+{
+    public static class TaskHelper
     {
-        return task.DeadLine - task.Created;
+        public static TimeSpan GetRemainingTime(this MyTask task)
+        {
+            return task.DeadLine - DateTime.Now;
+        }
+
+        public static TimeSpan GetAllocatedTime(this MyTask task)
+        {
+            return task.DeadLine - task.Created;
+        }
     }
 }

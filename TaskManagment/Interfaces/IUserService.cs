@@ -1,5 +1,11 @@
-public interface IUserService
+using TaskManagment.Models;
+
+namespace TaskManagment.Interfaces
 {
-    public void AddUser(User user);
-    public User FindByEmail(string email);
+    public interface IUserService
+    {
+        void AddUser(User user);
+
+        User FindByEmail(string email);
+    }
 }

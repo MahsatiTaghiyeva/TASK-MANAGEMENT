@@ -1,31 +1,57 @@
-public class UserService : IUserService
+using TaskManagment.Exceptions;
+using TaskManagment.Interfaces;
+using TaskManagment.Models;
+
+namespace TaskManagment.Services
 {
-    private static User[] _users = new User[0];
-
-    public void AddUser(User user)
+    public class UserService : IUserService
     {
-        foreach (var User in _users)
+        private readonly List<User> _users = new();
+
+        public void AddUser(User user)
         {
-            if (User.Email.Equals(user.Email,StringComparison.OrdinalIgnoreCase))
+            bool exists = _users.Any(x =>
+                x.Email.Equals(user.Email, StringComparison.OrdinalIgnoreCase));
+
+            if (exists)
             {
-                throw new ConflictException("This email is already registered.");
+                throw new ConflictException(
+                    $"User with email {user.Email} already exists.");
             }
+
+            _users.Add(user);
         }
 
-        Array.Resize(ref _users, _users.Length + 1);
-        _users[^1] = user;
-    }
-
-    public User FindByEmail(string email)
-    {
-        foreach (var user in _users)
+        public User FindByEmail(string email)
         {
-            if (user.Email.Equals(email,StringComparison.OrdinalIgnoreCase))
+            User? user = _users.FirstOrDefault(x =>
+                x.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+
+            if (user == null)
             {
-                return user;
+                throw new NotFoundException(
+                    $"No user found with email: {email}");
             }
+
+            return user;
         }
 
-        throw new NotFoundException($"User with email '{email}' not found.");
+        public User GetById(int id)
+        {
+            User? user = _users.FirstOrDefault(x => x.Id == id);
+
+            if (user == null)
+            {
+                throw new NotFoundException(
+                    $"No user found with ID: {id}");
+            }
+
+            return user;
+        }
+
+        public List<User> GetAll()
+        {
+            return _users;
+        }
     }
 }
